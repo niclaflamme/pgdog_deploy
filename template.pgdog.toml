@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# ---- GENERAL -----------------------------------------------------------------
+
+[general]
+query_timeout = 1_000
+checkout_timeout = 1_000
+connect_timeout = 1_000
+load_balancing_strategy = "round_robin"
+rollback_timeout = 1_000
+read_write_strategy = "aggressive"
+
+# ------------------------------------------------------------------------------
+# ---- DATABASES ---------------------------------------------------------------
+
+[[databases]]
+name = "postgres"
+host = "{{shard_0_pghost}}"
+port = "{{shard_0_pgport}}"
+database_name = "{{shard_0_pgdatabase}}"
+user = "{{shard_0_pguser}}"
+password = "{{shard_0_pgpassword}}"
+shard = 0
+
+[[databases]]
+name = "postgres"
+host = "{{shard_1_pghost}}"
+port = "{{shard_1_pgport}}"
+database_name = "{{shard_1_pgdatabase}}"
+user = "{{shard_1_pguser}}"
+password = "{{shard_1_pgpassword}}"
+shard = 1
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------

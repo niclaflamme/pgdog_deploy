@@ -1,0 +1,44 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# Go
+bin/
+vendor/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Rust
+target/
+
+# Python
+__pycache__/
+*.py[cod]
+*.$py.class
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+
+# Editor swaps
+*~
+*.swp
+
+pgdog.toml
+users.toml
