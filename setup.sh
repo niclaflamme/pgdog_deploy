@@ -40,3 +40,5 @@ sed "${sed_args[@]}" \
   pgdog.toml
 
 echo "pgdog.toml created."
+
+exec "$@"
