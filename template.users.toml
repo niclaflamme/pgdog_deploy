@@ -1,0 +1,4 @@
+[[users]]
+database = "postgres"
+name = "{{pgdog_pguser}}"
+password = "{{pgdog_pgpassword}}"

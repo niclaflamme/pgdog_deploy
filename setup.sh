@@ -13,9 +13,12 @@ set -euo pipefail
 : "${SHARD_1_PGDATABASE:?Need SHARD_1_PGDATABASE}"
 : "${SHARD_1_PGUSER:?Need SHARD_1_PGUSER}"
 : "${SHARD_1_PGPASSWORD:?Need SHARD_1_PGPASSWORD}"
+: "${PGDOG_PGUSER:?Need PGDOG_PGUSER}"
+: "${PGDOG_PGPASSWORD:?Need PGDOG_PGPASSWORD}"
 
 # Copy template
 cp template.pgdog.toml pgdog.toml
+cp template.users.toml users.toml
 
 # Cross-platform sed -i
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -24,7 +27,7 @@ else
   sed_args=(-i)
 fi
 
-# Perform replacements
+# Populate pgdog.toml
 sed "${sed_args[@]}" \
   -e "s|\"{{admin_password}}\"|\"$ADMIN_PASSWORD\"|g" \
   -e "s|\"{{shard_0_pghost}}\"|\"$SHARD_0_PGHOST\"|g" \
@@ -38,6 +41,12 @@ sed "${sed_args[@]}" \
   -e "s|\"{{shard_1_pguser}}\"|\"$SHARD_1_PGUSER\"|g" \
   -e "s|\"{{shard_1_pgpassword}}\"|\"$SHARD_1_PGPASSWORD\"|g" \
   pgdog.toml
+
+# Populate users.toml
+sed "${sed_args[@]}" \
+  -e "s|\"{{pgdog_pguser}}\"|\"$PGDOG_PGUSER\"|g" \
+  -e "s|\"{{pgdog_pgpassword}}\"|\"$PGDOG_PGPASSWORD\"|g" \
+  users.toml
 
 echo "pgdog.toml created."
 
