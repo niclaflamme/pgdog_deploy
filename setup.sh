@@ -42,12 +42,14 @@ sed "${sed_args[@]}" \
   -e "s|\"{{shard_1_pgpassword}}\"|\"$SHARD_1_PGPASSWORD\"|g" \
   pgdog.toml
 
+echo "pgdog.toml created."
+
 # Populate users.toml
 sed "${sed_args[@]}" \
   -e "s|\"{{pgdog_pguser}}\"|\"$PGDOG_PGUSER\"|g" \
   -e "s|\"{{pgdog_pgpassword}}\"|\"$PGDOG_PGPASSWORD\"|g" \
   users.toml
 
-echo "pgdog.toml created."
+echo "usesr.toml created."
 
 exec "$@"
